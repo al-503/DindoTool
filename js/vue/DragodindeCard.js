@@ -3,6 +3,8 @@ class DragodindeCard {
         this._dragodinde = dragodinde
     }
 
+    ///// cette logique doit bouger dans un controller de dragodindes /////
+
     /**
      * 
      * @param {Number} generation 
@@ -25,10 +27,14 @@ class DragodindeCard {
         return hourInMs * gestationTime;
     }
 
+
     calculateDateToGiveBirth(generation) {
-        // la date AJD + le temp de gestation en ms
-        return new Date(Date.now + calculateGestationTime(generation))
+        return new Date(Date.now() + calculateGestationTime(generation))
     }
+
+
+
+    ////////////////////////////////////////////////////////////////////////////
 
     createDragodindesCard() {
         const $wrapper = document.createElement('div')
