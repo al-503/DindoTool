@@ -1,0 +1,5 @@
+class Dragodinde {
+    constructor(data) {
+
+    }
+}
