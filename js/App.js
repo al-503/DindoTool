@@ -1,15 +1,20 @@
 class App {
     constructor() {
-        //this.$moviesWrapper = document.querySelector('.movies-wrapper')
-        this.dragodindeApi = new DragodindeApi('/data/dragodindesjson')
+        this.$dragodindesWrapper = document.querySelector('.dragodindes-wrapper')
+        this.dragodindeApi = new DragodindeApi('/data/dragodindes.json')
     }
 
     async main() {
+        // ont recup la data
         const data = await this.dragodindeApi.getDragodindes()
 
-        data.forEach(data => {
-            const dagodindes = new Dragodinde(data)
-            // this.$moviesWrapper.appendChild(Template.createCard())
+        // ont format la data
+        const dragodindes = data.map(dd => new Dragodinde(dd))
+
+        // ont render la data
+        dragodindes.forEach(dd => {
+            const dragodindeCard = new DragodindeCard(dd)
+            this.$dragodindesWrapper.appendChild(dragodindeCard.createDragodindesCard())
         })
     }
 }
