@@ -14,7 +14,7 @@ class DragodindeCard {
         const base = 36;
         const tranche = 12;
         const timeInHours = base + tranche * generation
-        return convertGestationTimeInMs(timeInHours)
+        return this.convertGestationTimeInMs(timeInHours)
     }
 
     /**
@@ -33,14 +33,15 @@ class DragodindeCard {
      * @returns {Date} to give a birth
      */
     calculateDateToGiveBirth(generation) {
-        return new Date(Date.now() + calculateGestationTime(generation))
+        return new Date(Date.now() + this.calculateGestationTime(generation))
     }
 
     /**
-     * @param {Date} date 
+     * @param {Number} generation 
      * @returns {String} name of the mount
      */
-    formatDateToName(date) {
+    formatDateToName(generation) {
+        const date = this.calculateDateToGiveBirth(generation)
         const weeksDays = ["LUN", "MAR", "MER", "JEU", "VEN", "SAM", "DIM"]
         const day = weeksDays[date.getDay() - 1]
         const hours = date.getHours()
@@ -56,7 +57,7 @@ class DragodindeCard {
         $wrapper.classList.add('dragodindes-card-wrapper')
 
         const dragodindeCard = `
-            <h3">${this._dragodinde.name}</h3>
+            <button type="button">${this._dragodinde.name}</button>
         `
 
         $wrapper.innerHTML = dragodindeCard
