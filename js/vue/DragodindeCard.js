@@ -27,12 +27,27 @@ class DragodindeCard {
         return hourInMs * gestationTime;
     }
 
-
+    /**
+     * 
+     * @param {Number} generation 
+     * @returns {Date} to give a birth
+     */
     calculateDateToGiveBirth(generation) {
         return new Date(Date.now() + calculateGestationTime(generation))
     }
 
-
+    /**
+     * @param {Date} date 
+     * @returns {String} name of the mount
+     */
+    formatDateToName(date) {
+        const weeksDays = ["LUN", "MAR", "MER", "JEU", "VEN", "SAM", "DIM"]
+        const day = weeksDays[date.getDay() - 1]
+        const hours = date.getHours()
+        // add 0 if number is under 10
+        const minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()
+        return `${day}${hours}H${minutes}`
+    }
 
     ////////////////////////////////////////////////////////////////////////////
 
