@@ -11,6 +11,18 @@
         {
             "colors": "Rousse",
             "generation": 1
+        },
+        {
+            "colors": "Rousse-Amande",
+            "generation": 2
+        },
+        {
+            "colors": "Rousse-Dorée",
+            "generation": 2
+        },
+        {
+            "colors": "Amande-Dorée",
+            "generation": 2
         }
     ]
 }
