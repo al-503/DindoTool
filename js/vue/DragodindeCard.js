@@ -40,27 +40,37 @@ class DragodindeCard {
      * @param {Number} generation 
      * @returns {String} name of the mount
      */
-    formatDateToName(generation) {
-        const date = this.calculateDateToGiveBirth(generation)
-        const weeksDays = ["LUN", "MAR", "MER", "JEU", "VEN", "SAM", "DIM"]
-        const day = weeksDays[date.getDay() - 1]
-        const hours = date.getHours()
+    formatDateToName() {
+        const generation = this._dragodinde._generation;
+        const date = this.calculateDateToGiveBirth(generation);
+        const weeksDays = ["DIM", "LUN", "MAR", "MER", "JEU", "VEN", "SAM"];
+        const day = weeksDays[date.getDay()];
+        const hours = date.getHours();
         // add 0 if number is under 10
-        const minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()
+        const minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
         return `${day}${hours}H${minutes}`
     }
 
     ////////////////////////////////////////////////////////////////////////////
 
+    createButton() {
+        const button = document.createElement('button');
+        button.textContent = this._dragodinde.name;
+        button.addEventListener('click', () => {
+            // TODO replace by new html component
+            console.log(this.formatDateToName());
+        })
+
+        return button;
+    }
+
     createDragodindesCard() {
-        const $wrapper = document.createElement('div')
-        $wrapper.classList.add('dragodindes-card-wrapper')
+        const $wrapper = document.createElement('div');
+        $wrapper.classList.add('dragodindes-card-wrapper');
 
-        const dragodindeCard = `
-            <button type="button">${this._dragodinde.name}</button>
-        `
+        const dragodindeCard = this.createButton();
 
-        $wrapper.innerHTML = dragodindeCard
+        $wrapper.appendChild(dragodindeCard)
         return $wrapper
     }
 }

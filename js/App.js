@@ -5,13 +5,13 @@ class App {
     }
 
     async main() {
-        // ont recup la data
+        // get data
         const data = await this.dragodindeApi.getDragodindes()
 
-        // ont format la data
+        // format data
         const dragodindes = data.map(dd => new Dragodinde(dd))
 
-        // ont render la data
+        // render data
         dragodindes.forEach(dd => {
             const dragodindeCard = new DragodindeCard(dd)
             this.$dragodindesWrapper.appendChild(dragodindeCard.createDragodindesCard())
