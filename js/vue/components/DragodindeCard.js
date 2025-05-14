@@ -2,7 +2,7 @@ class DragodindeCard {
     constructor(dragodinde) {
         this._dragodinde = dragodinde
     }
-
+    // ont devrai juste avoir des getter et des setters ? 
     ///// cette logique doit bouger dans un controller de dragodindes /////
 
     /**
@@ -53,24 +53,23 @@ class DragodindeCard {
 
     ////////////////////////////////////////////////////////////////////////////
 
-    createButton() {
+    createDragodindesButton() {
         const button = document.createElement('button');
         button.textContent = this._dragodinde.name;
         button.addEventListener('click', () => {
-            // TODO replace by new html component
-            console.log(this.formatDateToName());
+            const field = new NameField();
+            console.log(field)
+            field.replaceField(this.formatDateToName());
         })
 
-        return button;
+        return this.insertDragodindesButton(button);
     }
 
-    createDragodindesCard() {
+    insertDragodindesButton(node) { // pas vraiment une carte + ça ça inserte mais ça doit sappeler create et insert aprer plutot
         const $wrapper = document.createElement('div');
         $wrapper.classList.add('dragodindes-card-wrapper');
 
-        const dragodindeCard = this.createButton();
-
-        $wrapper.appendChild(dragodindeCard)
+        $wrapper.appendChild(node)
         return $wrapper
     }
 }

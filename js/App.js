@@ -14,8 +14,11 @@ class App {
         // render data
         dragodindes.forEach(dd => {
             const dragodindeCard = new DragodindeCard(dd)
-            this.$dragodindesWrapper.appendChild(dragodindeCard.createDragodindesCard())
+            this.$dragodindesWrapper.appendChild(dragodindeCard.createDragodindesButton())
         })
+
+        const nameField = new NameField()
+        this.$dragodindesWrapper.appendChild(nameField.createField())
     }
 }
 
